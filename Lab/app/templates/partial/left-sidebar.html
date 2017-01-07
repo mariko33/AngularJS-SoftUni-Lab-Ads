@@ -1,0 +1,44 @@
+
+<!-- Navigation box for anonymous site visitors -->
+<div ng-if="authService.isAnonymous()" class="box">
+    <h2>Navigation</h2>
+    <ul class="sidebar-menu">
+        <li><a href="#/">Home</a></li>
+        <li><a href="#/login">Login</a></li>
+        <li><a href="#/register">Register</a></li>
+    </ul>
+</div>
+
+<!-- Login / register box for anonymous site visitors -->
+<div class="box" ng-if="authService.isAnonymous()">
+    <p>To publish a new ad, please login.</p>
+    <a href="#/login" class="button">Login</a>
+    <a href="#/register" class="button">Register</a>
+</div>
+
+<!-- Navigation box for logged in normal users (not admins) -->
+<div ng-if="authService.isNormalUser()" class="box">
+    <h2>Navigation</h2>
+    <ul>
+        <li ng-class="{'selected' : navBtnId == null}" ng-click="navBtnClicked(null)"><a href="#/user/home">Home</a></li>
+        <li ng-class="{'selected' : navBtnId == 'My Ads'}" ng-click="navBtnClicked('My Ads')"><a href="#/user/ads">My Ads</a></li>
+        <li ng-class="{'selected' : navBtnId == 'Publish'}" ng-click="navBtnClicked('Publish')"><a href="#/user/ads/publish">Publish New Add</a></li>
+        <li ng-class="{'selected' : navBtnId == 'Edit'}" ng-click="navBtnClicked('Edit')"><a href="#/user/profile">Edit Profile</a></li>
+        <li ng-class="{'selected' : navBtnId == 'Logout'}" ng-click="navBtnClicked('Logout')"><a ng-click="logout()">Logout</a></li>
+    </ul>
+</div>
+
+<div ng-if="navBtnId == 'My Ads'" class="box">
+    <h2>Navigation</h2>
+    <ul class="sidebar-menu">
+        <li class="special" ng-class="{'selected' : status == null}" ng-click="statusCheck(null)">All</li>
+        <li class="special" ng-class="{'selected' : status == 'Published'}" ng-click="statusCheck('Published')">Published</li>
+        <li class="special" ng-class="{'selected' : status == 'WaitingApproval'}" ng-click="statusCheck('WaitingApproval')">Waiting Approval</li>
+        <li class="special" ng-class="{'selected' : status == 'Inactive'}" ng-click="statusCheck('Inactive')">Inactive</li>
+        <li class="special" ng-class="{'selected' : status == 'Rejected'}" ng-click="statusCheck('Rejected')">Rejected</li>
+    </ul>
+</div>
+
+
+
+

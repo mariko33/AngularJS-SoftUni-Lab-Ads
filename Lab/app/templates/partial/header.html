@@ -1,0 +1,16 @@
+
+
+<!--
+TODO:
+1). Implement logic to show different app header for:
+    - anonymous site visitors
+    - logged in user
+    - logged in administrators
+2). Implement logic to show different title for different screen
+-->
+
+Ads<span ng-if="pageTitle"> &ndash; {{pageTitle}}</span>
+<div ng-if="authService.isLoggedIn()" class="user-area">
+    <span>{{authService.getCurrentUser().username}}</span>
+    <a ng-click="logout()" class="link">Logout</a>
+</div>
