@@ -56,15 +56,7 @@ app.factory('authService',function ($http, baseServiceUrl) {
             return (currentUser != undefined)&&(currentUser.isAdmin);
             
         },
-        /*getAuthHeaders:function () {
-            var headers={};
-            var currentUser=this.getCurrentUser();
-            if(currentUser){
-                headers['Authorization'] = 'Bearer' + currentUser.access_token;
-            }
-            return headers;
-        }*/
-
+        
         getAuthHeaders : function() {
             var headers = {};
             var currentUser = this.getCurrentUser();
